@@ -11,7 +11,7 @@ app = Flask(__name__)
 def post_id():
     
     identity = request.json['id']
-    mm.create_map(identity)
+    return mm.create_map(identity)
 
 
 # SPEC 2: post a new leaf to ID
@@ -20,7 +20,7 @@ def post_leaf(identity):
     
     path = request.json['path']
     text = request.json['text']
-    mm.add_leaf(identity, path, text)
+    return mm.add_leaf(identity, path, text)
 
 
 # SPEC 4: get the whole tree from ID
