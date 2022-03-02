@@ -9,21 +9,16 @@ fi
 
 # Select the specification to run
 if [[ $1 -eq 1 ]]; then
-    curl -X [verb] [something] -H 'content-type: application/json' -d '{"id": "my-map"}'
+    curl -X POST http://127.0.0.1:5000 -H 'content-type: application/json' -d '{"id": "my-map"}'
 
 elif [[ $1 -eq 2 ]]; then
-    curl -X [verb] [something] \
-    -H 'content-type: application/json' \
-    -d '{
-        "path": "i/like/potatoes",
-        "text": "Because reasons"
-    }'
+    curl -X POST http://127.0.0.1:5000/my-map -H 'content-type: application/json' -d '{"path": "i/like/potatoes","text": "Because reasons"}'
 
 elif [[ $1 -eq 3 ]]; then
-    curl -X [verb] [something] -H 'content-type: application/json'
+    curl -X GET http://127.0.0.1:5000/my-map/i/like/potatoes -H 'content-type: application/json'
 
 elif [[ $1 -eq 4 ]]; then
-    curl -X [verb] [something] 
+    curl -X GET http://127.0.0.1:5000/my-map 
 
 else
     echo "Number specified was invalid"
