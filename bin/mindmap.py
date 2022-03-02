@@ -1,11 +1,4 @@
-class Node:
-
-    def __init__(self, path, text=None):
-        pass
-
-    def graft(self, path, text):
-        pass
-
+from tree import Node
 
 # Registry to store all the trees
 registry = {}
@@ -49,7 +42,7 @@ def read_tree(identity):
     
     # Print the whole tree
     try:
-        return str(registry[identity])
+        return registry[identity].pretty()
 
     # ID not found
     except KeyError:
