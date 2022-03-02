@@ -11,6 +11,12 @@ def post_id():
     return f"Created {identity}"
 
 # SPEC 2: post a new leaf to ID
+@app.route("/<identity>", methods=['POST'])
+def post_leaf(identity):
+    
+    path = request.json['path']
+    text = request.json['text']
+    return f"Added {path} with {text} for {identity}"
 
 # SPEC 4: get the whole tree from ID
 
