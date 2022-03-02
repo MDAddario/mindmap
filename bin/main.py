@@ -19,6 +19,11 @@ def post_leaf(identity):
     return f"Added {path} with {text} for {identity}"
 
 # SPEC 4: get the whole tree from ID
+@app.route("/<identity>", methods=['GET'])
+def get_tree(identity):
+    
+    return f"Requested {identity}"
+
 
 # SPEC 3: get a single leaf from ID
 
