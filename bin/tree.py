@@ -1,33 +1,31 @@
 class Node:
 
-    def __init__(self, path, text=None):
+    def __init__(self, names=('root'), text=None):
 
-        if path.count('/') == 0:
-            self.name = path
+        self.name = names[0]
+
+        if len(names) == 1:
             self.text = text
             self.children = []
 
         else:
-
-            name, *rest = path.split('/')
-            
-            self.name = name
             self.text = None
-            self.children = [Node('/'.join(rest), text)]
+            self.children = [Node(names[1:], text)]
 
-    def graft(self, path, text):
+    def graft(self, names, text):
 
-        name, *rest = path.split('/')
+        # The leaf isn't new to the tree
+        if len(names) == 0:
+            return
 
+        # The next node still exists in the tree
         for child in self.children:
-
-            # Sliding down the tree
-            if child.name == name:
-                child.graft('/'.join(rest), text)
+            if child.name == names[0]:
+                child.graft(names[1:], text)
 
         # Spawn new branch
         else:
-            self.children.append(Node(path, text))
+            self.children.append(Node(names, text))
 
     def read(self, path):
         pass
@@ -38,6 +36,8 @@ class Node:
 
         if self.children:
             output += '/\n'
+        else:
+            output += '\n'
 
         for child in self.children:
             output += child.pretty(depth + 1)

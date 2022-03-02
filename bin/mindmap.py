@@ -11,7 +11,7 @@ def create_map(identity):
         raise ValueError(f"ID \"{identity}\" already has a mind map.")
 
     # Add the ID to our registry
-    registry[identity] = Node('root')
+    registry[identity] = Node()
     return 'Mind map creation successful.'
 
 
@@ -19,7 +19,7 @@ def add_leaf(identity, path, text):
 
     # Graft new leaf to tree
     try:
-        registry[identity].graft(path, text)
+        registry[identity].graft(path.split('/'), text)
         return 'Mind map leaf addition successful.'
 
     # ID not found
@@ -31,7 +31,7 @@ def read_leaf(identity, path):
 
     # Traverse the path
     try:
-        return registry[identity].read(path)
+        return registry[identity].read(path.split('/'))
 
     # ID not found
     except KeyError:
