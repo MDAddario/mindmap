@@ -1,5 +1,7 @@
 from flask import Flask, request
 
+import mindmap as mm
+
 
 # Define app
 app = Flask(__name__)
@@ -9,7 +11,7 @@ app = Flask(__name__)
 def post_id():
     
     identity = request.json['id']
-    return f"Created {identity}"
+    mm.create_map(identity)
 
 
 # SPEC 2: post a new leaf to ID
@@ -18,18 +20,18 @@ def post_leaf(identity):
     
     path = request.json['path']
     text = request.json['text']
-    return f"Added {path} with {text} for {identity}"
+    mm.add_leaf(identity, path, text)
 
 
 # SPEC 4: get the whole tree from ID
 @app.route("/<identity>", methods=['GET'])
 def get_tree(identity):
     
-    return f"Requested {identity}"
+    return mm.read_tree(identity)
 
 
 # SPEC 3: get a single leaf from ID
 @app.route("/<identity>/<path:path>", methods=['GET'])
 def get_leaf(identity, path):
     
-    return f"Requested {path} from {identity}"
+    return mm.read_leaf(identity, path)
