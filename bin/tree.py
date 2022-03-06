@@ -1,6 +1,6 @@
 class Node:
 
-    def __init__(self, names=('root'), text=None):
+    def __init__(self, names=('root',), text=None):
 
         self.name = names[0]
 
