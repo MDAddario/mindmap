@@ -1,6 +1,6 @@
 from flask import Flask, request
 
-from .mindmap import create_map, add_leaf, read_leaf, read_tree, reset_db
+from .mindmap import create_map, add_leaf, read_leaf, read_tree
 
 
 # Define app
@@ -35,10 +35,3 @@ def get_leaf(identity, path):
 def get_tree(identity):
     
     return read_tree(identity)
-
-
-# NOT A SPEC: delete entire database (for unit testing)
-@app.route("/", methods=['DELETE'])
-def delete_all():
-    
-    return reset_db()
