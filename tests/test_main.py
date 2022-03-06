@@ -2,6 +2,9 @@ import pytest
 
 from bin import main, persistance
 
+# Delete pre-existing data
+persistance.file_db.unlink(missing_ok=True)
+
 
 @pytest.fixture()
 def app():
@@ -10,13 +13,7 @@ def app():
         "TESTING": True,
     })
 
-    # Delete pre-existing data
-    persistance.file_db.unlink(missing_ok=True)
-
     yield main.app
-
-    # Delete created data
-    persistance.file_db.unlink()
 
 
 @pytest.fixture()
@@ -24,11 +21,7 @@ def client(app):
     return app.test_client()
 
 
-def test_main(client):
-
-    '''
-    Testing post_id()
-    '''
+def test_post_id(client):
 
     response = client.post("/", json={"id": "vegetables"})
     assert response.status_code == 200
@@ -42,9 +35,8 @@ def test_main(client):
     response = client.post("/", json={"id": "fruits"})
     assert response.status_code == 400
 
-    '''
-    Testing post_leaf()
-    '''
+
+def test_post_leaf(client):
 
     response = client.post("/candy", json={
         "path": "i/like/candy",
@@ -76,9 +68,8 @@ def test_main(client):
         })
     assert response.status_code == 200
 
-    '''
-    Testing get_leaf()
-    '''
+
+def test_get_leaf(client):
 
     response = client.get("/vegetables/i/like/green/peppers")
     assert response.json == {
@@ -92,9 +83,8 @@ def test_main(client):
         "text": "small trees"
         }
 
-    '''
-    Testing get_tree()
-    '''
+
+def test_get_tree(client):
     response = client.get("/vegetables")
     assert response.data == b"""root/
 \ti/
