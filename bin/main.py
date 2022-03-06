@@ -23,15 +23,15 @@ def post_leaf(identity):
     return mm.add_leaf(identity, path, text)
 
 
-# SPEC 4: get the whole tree from ID
-@app.route("/<identity>", methods=['GET'])
-def get_tree(identity):
-    
-    return mm.read_tree(identity)
-
-
 # SPEC 3: get a single leaf from ID
 @app.route("/<identity>/<path:path>", methods=['GET'])
 def get_leaf(identity, path):
     
     return mm.read_leaf(identity, path)
+
+
+# SPEC 4: get the whole tree from ID
+@app.route("/<identity>", methods=['GET'])
+def get_tree(identity):
+    
+    return mm.read_tree(identity)
