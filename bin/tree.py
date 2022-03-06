@@ -39,6 +39,9 @@ class Node:
             if child.name == names[0]:
                 return child.read(names[1:])
 
+        # Path does not exist
+        raise ValueError
+
     def pretty(self, depth=0):
 
         output = '\t' * depth + self.name

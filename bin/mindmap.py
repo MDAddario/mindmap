@@ -47,6 +47,10 @@ def read_leaf(identity, path):
         except KeyError:
             return f"ID \"{identity}\" does not have a mind map.", 400
 
+        # Path doesn't exist
+        except ValueError:
+            return f"Path \"{path}\" does not exist in \"{identity}\" mind map.", 400
+
 
 def read_tree(identity):
 
