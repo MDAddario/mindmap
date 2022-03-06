@@ -146,5 +146,4 @@ def test_get_tree(client):
 \t\t\t\tsalads
 \t\thate/
 \t\t\tcauliflower
-\t\t\tbrocoli
-"""
+\t\t\tbrocoli"""

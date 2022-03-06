@@ -49,4 +49,7 @@ class Node:
 
         for child in self.children:
             output += child.pretty(depth + 1)
+        
+        if depth == 0:
+            return output[:-1]
         return output
