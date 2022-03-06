@@ -14,8 +14,9 @@ class Node:
 
     def graft(self, names, text):
 
-        # The leaf isn't new to the tree
+        # Update text of existing leaf
         if len(names) == 0:
+            self.text = text
             return
 
         # The next node still exists in the tree
