@@ -28,8 +28,15 @@ class Node:
         else:
             self.children.append(Node(names, text))
 
-    def read(self, path):
-        pass
+    def read(self, names):
+
+        # We made it to the end
+        if len(names) == 0:
+            return self.text
+
+        for child in self.children:
+            if child.name == names[0]:
+                return child.read(names[1:])
 
     def pretty(self, depth=0):
 

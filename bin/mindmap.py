@@ -31,7 +31,10 @@ def read_leaf(identity, path):
 
     # Traverse the path
     try:
-        return registry[identity].read(path.split('/'))
+        return {
+            "path": path,
+            "text": registry[identity].read(path.split('/'))
+        }
 
     # ID not found
     except KeyError:
