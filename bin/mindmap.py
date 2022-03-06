@@ -1,5 +1,5 @@
-from tree import Node
-from persistance import database
+from .tree import Node
+from .persistance import database
 
 
 def create_map(identity):

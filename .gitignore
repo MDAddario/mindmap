@@ -1,2 +1,3 @@
 __pycache__/
 database.pkl
+.pytest_cache

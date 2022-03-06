@@ -1,6 +1,6 @@
 from flask import Flask, request
 
-import mindmap as mm
+from .mindmap import create_map, add_leaf, read_leaf, read_tree, reset_db
 
 
 # Define app
@@ -11,7 +11,7 @@ app = Flask(__name__)
 def post_id():
     
     identity = request.json['id']
-    return mm.create_map(identity)
+    return create_map(identity)
 
 
 # SPEC 2: post a new leaf to ID
@@ -20,25 +20,25 @@ def post_leaf(identity):
     
     path = request.json['path']
     text = request.json['text']
-    return mm.add_leaf(identity, path, text)
+    return add_leaf(identity, path, text)
 
 
 # SPEC 3: get a single leaf from ID
 @app.route("/<identity>/<path:path>", methods=['GET'])
 def get_leaf(identity, path):
     
-    return mm.read_leaf(identity, path)
+    return read_leaf(identity, path)
 
 
 # SPEC 4: get the whole tree from ID
 @app.route("/<identity>", methods=['GET'])
 def get_tree(identity):
     
-    return mm.read_tree(identity)
+    return read_tree(identity)
 
 
 # NOT A SPEC: delete entire database (for unit testing)
 @app.route("/", methods=['DELETE'])
 def delete_all():
     
-    return mm.reset_db()
+    return reset_db()
