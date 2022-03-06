@@ -22,6 +22,7 @@ class Node:
         for child in self.children:
             if child.name == names[0]:
                 child.graft(names[1:], text)
+                break
 
         # Spawn new branch
         else:
