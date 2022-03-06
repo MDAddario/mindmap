@@ -35,3 +35,10 @@ def get_leaf(identity, path):
 def get_tree(identity):
     
     return mm.read_tree(identity)
+
+
+# NOT A SPEC: delete entire database (for unit testing)
+@app.route("/", methods=['DELETE'])
+def delete_all():
+    
+    return mm.reset_db()

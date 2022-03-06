@@ -60,3 +60,13 @@ def read_tree(identity):
         # ID not found
         except KeyError:
             return f"ID \"{identity}\" does not have a mind map.", 400
+
+
+def reset_db():
+
+    # Load data into RAM
+    with database() as db:
+
+        # Remove all keys from the db
+        for key in list(db.keys):
+            del db[key]
