@@ -8,7 +8,7 @@ def create_map(identity):
 
     # Make sure ID is new
     if identity in registry:
-        raise ValueError(f"ID \"{identity}\" already has a mind map.")
+        return f"ID \"{identity}\" already has a mind map.", 400
 
     # Add the ID to our registry
     registry[identity] = Node()
@@ -24,7 +24,7 @@ def add_leaf(identity, path, text):
 
     # ID not found
     except KeyError:
-        raise ValueError(f"ID \"{identity}\" does not have a mind map.")
+        return f"ID \"{identity}\" does not have a mind map.", 400
         
 
 def read_leaf(identity, path):
@@ -35,7 +35,7 @@ def read_leaf(identity, path):
 
     # ID not found
     except KeyError:
-        raise ValueError(f"ID \"{identity}\" does not have a mind map.")
+        return f"ID \"{identity}\" does not have a mind map.", 400
 
 
 def read_tree(identity):
@@ -46,4 +46,4 @@ def read_tree(identity):
 
     # ID not found
     except KeyError:
-        raise ValueError(f"ID \"{identity}\" does not have a mind map.")
+        return f"ID \"{identity}\" does not have a mind map.", 400
