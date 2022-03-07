@@ -1,6 +1,6 @@
 import pytest
 
-from bin import main, persistance
+from service import main, persistance
 
 '''
 Note that this code implicity tests the persistance

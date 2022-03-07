@@ -1,3 +1,3 @@
 #!/bin/sh
-export FLASK_APP=./bin/main
+export FLASK_APP=./service/main
 flask run
