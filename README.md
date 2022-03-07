@@ -20,7 +20,7 @@ pip install -r requirements.txt
 
 ## Unit testing
 
-The mind map webservice is unit tested using **Bitbucket Pipelines**. You can click on the `./unittest.sh` dropdown to see that the unit tests provide **100% coverage**
+The mind map webservice is unit tested using **Bitbucket Pipelines**. You can click on the `bash unittest.sh` dropdown in the Pipelines section to see that the unit tests provide **100% coverage**
 
 ```
 Name                 Stmts   Miss Branch BrPart  Cover
