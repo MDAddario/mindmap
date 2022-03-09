@@ -10,7 +10,7 @@ from contextlib import contextmanager
 
 
 # Local path to file database
-file_db = Path(__file__).parent.resolve()/"database.pkl"
+file_db = Path(__file__).parent.resolve() / "database.pkl"
 
 
 @contextmanager
@@ -26,10 +26,10 @@ def database():
         pass
     ```
     """
-    
+
     # Load the db from file
     try:
-        with file_db.open('rb') as f:
+        with file_db.open("rb") as f:
             db = pkl.load(f)
     except FileNotFoundError:
         db = {}
@@ -40,5 +40,5 @@ def database():
 
     # Update the db's file
     finally:
-        with file_db.open('wb') as f:
+        with file_db.open("wb") as f:
             pkl.dump(db, f)

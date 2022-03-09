@@ -3,6 +3,7 @@ Data structure for mindmap manipulations
 Define the nodes that will compose mind map trees
 """
 
+
 class Node:
     """
     Node constructing the mind map trees
@@ -13,7 +14,7 @@ class Node:
         children (List[Node]): All connections to child nodes
     """
 
-    def __init__(self, names=('root',), text=None):
+    def __init__(self, names=("root",), text=None):
         """
         Create a new node, as well as all mandatory children
 
@@ -95,18 +96,18 @@ class Node:
             (str) formatted print of tree
         """
         # Add current node name
-        output = '\t' * depth + self.name
+        output = "\t" * depth + self.name
 
         # Only add forward slash if leaf
         if self.children:
-            output += '/\n'
+            output += "/\n"
         else:
-            output += '\n'
+            output += "\n"
 
         # Recurse into children
         for child in self.children:
             output += child.pretty(depth + 1)
-        
+
         # Ignore linebreak for root print
         if depth == 0:
             return output[:-1]
