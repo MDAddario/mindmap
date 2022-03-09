@@ -141,7 +141,7 @@ def test_get_leaf(client):
 
 
 def test_get_tree(client):
-"""
+    """
     Unit test specification 4
     """
 
