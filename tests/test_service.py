@@ -1,17 +1,15 @@
 """
 Unit test suite for mind map web service
 Tests all endpoints made available in service/main.py
+
+Note that this code implicity tests the persistance
+of the mindmap app because a session is not created
+and preserved across tests
 """
 
 import pytest
 
 from service import main, persistance
-
-'''
-Note that this code implicity tests the persistance
-of the mindmap app because a session is not created
-and preserved across tests
-'''
 
 # Delete pre-existing data
 persistance.file_db.unlink(missing_ok=True)
@@ -32,7 +30,7 @@ def client(app):
 
 def test_post_id(client):
     """
-    Unit test specification 1
+    Unit test for specification 1
     """
 
     # Create ID
@@ -58,7 +56,7 @@ def test_post_id(client):
 
 def test_post_leaf(client):
     """
-    Unit test specification 2
+    Unit test for specification 2
     """
 
     # Test missing ID
@@ -112,7 +110,7 @@ def test_post_leaf(client):
 
 def test_get_leaf(client):
     """
-    Unit test specification 3
+    Unit test for specification 3
     """
 
     # Test missing ID
@@ -142,7 +140,7 @@ def test_get_leaf(client):
 
 def test_get_tree(client):
     """
-    Unit test specification 4
+    Unit test for specification 4
     """
 
     # Test missing ID
