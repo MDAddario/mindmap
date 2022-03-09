@@ -8,6 +8,15 @@ from .persistance import database
 
 
 def create_map(identity):
+    """
+    Create a new mind map via an ID
+
+    Args:
+        - identity (str): unique mind map ID
+
+    Returns:
+        (str) indicates success/failure of operation
+    """
 
     # Load data into RAM
     with database() as db:
@@ -22,6 +31,17 @@ def create_map(identity):
 
 
 def add_leaf(identity, path, text):
+    """
+    Add a leaf to an existing mind map
+
+    Args:
+        - identity (str): unique mind map ID
+        - path     (str): forward-slash separated string of node names
+        - text     (str): value of leaf node
+
+    Returns:
+        (str) indicates success/failure of operation
+    """
 
     # Load data into RAM
     with database() as db:
@@ -37,11 +57,23 @@ def add_leaf(identity, path, text):
         
 
 def read_leaf(identity, path):
+    """
+    Read a leaf from an existing mind map
+
+    Args:
+        - identity (str): unique mind map ID
+        - path     (str): forward-slash separated string of node names
+
+    Returns:
+        (dict) contains 'path' and 'text' of leaf 
+        or
+        (str) indicates failure of operation
+    """
 
     # Load data into RAM
     with database() as db:
 
-        # Traverse the path
+        # Read the text from the given leaf
         try:
             return {
                 "path": path,
@@ -58,6 +90,17 @@ def read_leaf(identity, path):
 
 
 def read_tree(identity):
+    """
+    Read an entire existing mind map
+
+    Args:
+        - identity (str): unique mind map ID
+
+    Returns:
+        (str) pretty print of entire mind map
+        or
+        (str) indicates failure of operation
+    """
 
     # Load data into RAM
     with database() as db:

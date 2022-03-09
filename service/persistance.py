@@ -9,11 +9,23 @@ from pathlib import Path
 from contextlib import contextmanager
 
 
+# Local path to file database
 file_db = Path(__file__).parent.resolve()/"database.pkl"
 
 
 @contextmanager
 def database():
+    """
+    Context manager used to access file database
+
+    Modifications to database will be saved upon __exit__
+
+    Usage:
+    ```
+    with database() as db:
+        pass
+    ```
+    """
     
     # Load the db from file
     try:

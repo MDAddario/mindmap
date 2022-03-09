@@ -17,19 +17,23 @@ and preserved across tests
 persistance.file_db.unlink(missing_ok=True)
 
 
+# Mandatory Pytest fixture
 @pytest.fixture()
 def app():
-
     main.app.config.update({"TESTING": True})
     yield main.app
 
 
+# Mandatory Pytest fixture
 @pytest.fixture()
 def client(app):
     return app.test_client()
 
 
 def test_post_id(client):
+    """
+    Unit test specification 1
+    """
 
     # Create ID
     response = client.post("/", json={"id": "vegetables"})
@@ -53,6 +57,9 @@ def test_post_id(client):
 
 
 def test_post_leaf(client):
+    """
+    Unit test specification 2
+    """
 
     # Test missing ID
     response = client.post("/candy", json={
@@ -104,6 +111,9 @@ def test_post_leaf(client):
 
 
 def test_get_leaf(client):
+    """
+    Unit test specification 3
+    """
 
     # Test missing ID
     response = client.get("/candy/i/like/candy/corn")
@@ -131,6 +141,9 @@ def test_get_leaf(client):
 
 
 def test_get_tree(client):
+"""
+    Unit test specification 4
+    """
 
     # Test missing ID
     response = client.get("/candy")
