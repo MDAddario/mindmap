@@ -1,3 +1,8 @@
+"""
+Endpoints for mindmap web service
+Defines all valid POST and GET requests
+"""
+
 from flask import Flask, request
 
 from .mindmap import create_map, add_leaf, read_leaf, read_tree

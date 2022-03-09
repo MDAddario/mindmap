@@ -1,3 +1,8 @@
+"""
+Core logic for mindmap manipulations
+Defines all operations to create, expand, and read from mind maps
+"""
+
 from .tree import Node
 from .persistance import database
 

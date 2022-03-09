@@ -1,3 +1,9 @@
+"""
+Database for mindmap web service
+Saves data locally via pickles
+(yes, I know this is generally unsafe)
+"""
+
 import pickle as pkl
 from pathlib import Path
 from contextlib import contextmanager

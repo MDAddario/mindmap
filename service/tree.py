@@ -1,3 +1,8 @@
+"""
+Data structure for mindmap manipulations
+Define the nodes that will compose mind map trees
+"""
+
 class Node:
 
     def __init__(self, names=('root',), text=None):

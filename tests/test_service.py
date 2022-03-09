@@ -1,3 +1,8 @@
+"""
+Unit test suite for mind map web service
+Tests all endpoints made available in service/main.py
+"""
+
 import pytest
 
 from service import main, persistance
